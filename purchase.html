@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Book - Dans BookHub</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .content {
+            flex: 1;
+        }
+    
+        .book-img {
+            width: 300px;
+            height: 425px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+    
+        .book-img:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(221, 243, 240, 0.5);
+        }
+    
+        .purchase {
+            text-align: center;
+        }
+    
+        .form-wrapper {
+            max-width: 350px;
+            height: 420px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #3a3939;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    
+        .book-info {
+            text-align: center;
+        }
+    
+        .form-group label {
+            text-align: left;
+            display: block;
+        }
+    
+        @media (max-width: 576px) {
+            .book-img {
+                width: 250px;
+                height: 325px;
+            }
+    
+            .form-wrapper {
+                max-width: 260px;
+                height: auto;
+                padding: 15px;
+                margin-bottom: 30px;
+                margin-bottom: 130px;
+            }
+    
+            .form-group input {
+                font-size: 14px;
+            }
+    
+            h2, h3 {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+    <header class="navbar navbar-expand-lg navbar-dark navcolor sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Dans BookHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <form class="form-inline">
+                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark text-light btn-md my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <section class="purchase py-5">
+            <div class="container">
+                <h2 class="text-center mb-4 pb-5">Purchase Your Book</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div id="bookDetails" class="mb-4 text-center">
+                            <img src="" id="bookImage" class="book-img mb-3" alt="">
+                            <div id="bookInfo" class="book-info"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-wrapper p-4 border rounded-md shadow">
+                            <h3 class="text-center mb-4">Order Form</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                                </div>
+                           
+                                <div class="form-group">
+                                    <label for="address">Shipping Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Enter address" required>
+                                </div>
+                                <button type="submit" class="btn btn-outline-light btn-md btn-block">Place Order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const book = urlParams.get('book');
+        const bookImage = document.getElementById('bookImage');
+        const bookInfo = document.getElementById('bookInfo');
+        let info = '';
+
+        switch (book) {
+    case 'scifi1':
+        info = '<h5>Sci-Fi Book</h5><p><strong>Price:</strong> ₱519.99</p>';
+        bookImage.src = 'assets/scifi2.jpeg';
+        break;
+    case 'scifi2':
+        info = '<h5>Sci-Fi Book</h5><p><strong>Price:</strong> ₱349.99</p>';
+        bookImage.src = 'assets/Scifi1.jpeg'; 
+        break;
+    case 'mystery1':
+        info = '<h5>Mystery Book</h5><p><strong>Price:</strong> ₱319.99</p>';
+        bookImage.src = 'assets/Myster.jpeg'; 
+        break;
+    case 'mystery2':
+        info = '<h5>Mystery Book</h5><p><strong>Price:</strong> ₱539.99</p>';
+        bookImage.src = 'assets/mystery3.jpeg'; 
+        break;
+    case 'fantasy1':
+        info = '<h5>Fantasy Book</h5><p><strong>Price:</strong> ₱499.99</p>';
+        bookImage.src = 'assets/Fantasy6.jpeg'; 
+        break;
+    case 'fantasy2':
+        info = '<h5>Fantasy Book</h5><p><strong>Price:</strong> ₱502.99</p>';
+        bookImage.src = 'assets/Fantasy5.jpeg'; 
+        break;
+    case 'fantasy3':
+        info = '<h5>Fantasy Book</h5><p><strong>Price:</strong> ₱239.99</p>';
+        bookImage.src = 'assets/Fantasy4.jpeg'; 
+        break;
+    default:
+        info = '<h5>Book not found</h5>';
+        bookImage.src = ''; 
+        break;
+}
+
+
+        bookInfo.innerHTML = info;
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+
+    <footer class="text-center py-3 fixed-bottom navcolor">
+        <div>
+            <p>&copy; 2024 Dans Book Hub. All rights reserved.</p>
+            <a href="#" class="text-white" data-toggle="modal" data-target="#termsModal">Terms and Conditions</a> | 
+            <a href="#" class="text-white" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
+        </div>
+        <div>
+            <a href="https://www.facebook.com/profile.php?id=100088830540623" class="text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        </footer>
+    
+ 
+   
+        <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="termsModalLabel">Terms and Conditions</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 class="font-weight-bold">Introduction</h6>
+                        <p>Welcome to Dans BookHub. By using our services, you agree to our terms and conditions outlined here.</p>
+                        <h6 class="font-weight-bold">User Agreement</h6>
+                        <p>By accessing our site, you agree to adhere to our guidelines and policies.</p>
+                        <h6 class="font-weight-bold">Liabilities</h6>
+                        <p>Dans BookHub is not responsible for any damages arising from the use of our site or services.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-dark text-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+   
+        <div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="privacyModalLabel">Privacy Policy</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h6 class="font-weight-bold">Information Collection</h6>
+                        <p>We collect various types of information, including personal data, to provide better services.</p>
+                        <h6  class="font-weight-bold">Data Usage</h6>
+                        <p>Your data may be used to improve our website and enhance user experience.</p>
+                        <h6  class="font-weight-bold">Security Measures</h6>
+                        <p>We implement various security measures to protect your personal information.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-dark text-light" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+  
+        <div class="text-center text-light py-3 fixed-bottom navcolor">
+            <div>
+                <p>&copy; 2024 Dans Book Hub. All rights reserved.</p>
+                <a href="#" class="text-white" data-toggle="modal" data-target="#termsModal">Terms and Conditions</a> | 
+                <a href="#" class="text-white" data-toggle="modal" data-target="#privacyModal">Privacy Policy</a>
+            </div>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100088830540623" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" class="text-white"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const featureCards = document.querySelectorAll('.feature-card');
+                
+                featureCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('show');
+                    }, index * 900); 
+                });
+            });
+    
+            document.getElementById('scrollUp').addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            document.getElementById('scrollDown').addEventListener('click', function() {
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                });
+                    window.addEventListener('scroll', function() {
+                        const scrollUpButton = document.getElementById('scrollUp');
+                        if (document.documentElement.scrollTop > 100) {
+                        scrollUpButton.style.display = 'block';
+                    } else {
+                        scrollUpButton.style.display = 'none';
+                    }
+                });
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
